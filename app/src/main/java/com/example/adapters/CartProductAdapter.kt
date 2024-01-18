@@ -23,7 +23,7 @@ class CartProductAdapter : RecyclerView.Adapter<CartProductAdapter.CartProductVi
                 tvCartProdQuantity.text = cartProduct.quantity.toString()
 
                 val priceAfterOffer =  cartProduct.product.offerPercentage.getProductPrice(cartProduct.product.price)
-                tvProductCartPrice.text = "LE ${String.format("%.2f",priceAfterOffer)}"
+                tvProductCartPrice.text = "Rs. ${String.format("%.2f",priceAfterOffer)}"
 
                 imgCartProdColor.setImageDrawable(ColorDrawable(cartProduct.selectedColor?: Color.TRANSPARENT))
                 tvCartProdSize.text = cartProduct.selectedSize?:"".also { imgCartProdSize.setImageDrawable(ColorDrawable(Color.TRANSPARENT)) }

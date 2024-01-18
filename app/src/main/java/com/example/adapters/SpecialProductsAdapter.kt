@@ -18,12 +18,12 @@ class SpecialProductsAdapter : RecyclerView.Adapter<SpecialProductsAdapter.Speci
              binding.apply {
                  Glide.with(itemView).load(product.images[0]).into(imgSpecialRvItem)
                  tvSpecialProductName.text = product.name
-                 tvSpecialProductPrice.text = "LE ${product.price}"
+                 tvSpecialProductPrice.text = "Rs. ${product.price}"
 
                  product.offerPercentage?.let {
-                     val remainingPricePercentage = 1f - it
+                     val remainingPricePercentage = it - 1f
                      val priceAfterOffer = remainingPricePercentage * product.price
-                     tvSpecialProductPrice.text = "LE ${String.format("%.2f",priceAfterOffer)}"
+                     tvSpecialProductPrice.text = "Rs. ${String.format("%.2f",priceAfterOffer)}"
                  }
 
              }

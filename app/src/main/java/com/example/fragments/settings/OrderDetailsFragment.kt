@@ -65,7 +65,7 @@ class OrderDetailsFragment : Fragment() {
             tvAddress.text = "${order.address.state},${order.address.city}"
             tvPhoneNumber.text = order.address.phoneNumb
 
-            tvTotalPrice.text = "LE ${order.totalPrice}"
+            tvTotalPrice.text = "Rs. ${order.totalPrice}"
         }
 
         orderDetailsAdapter.differ.submitList(order.products)

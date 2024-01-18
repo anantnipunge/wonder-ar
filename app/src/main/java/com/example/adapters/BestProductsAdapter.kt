@@ -23,11 +23,11 @@ class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProduct
             binding.apply {
                 Glide.with(itemView).load(product.images[0]).into(imgProduct)
                 tvName.text = product.name
-                tvPrice.text = "LE ${product.price}"
+                tvPrice.text = "Rs. ${product.price}"
 
                 product.offerPercentage?.let {
                     val priceAfterOffer = product.offerPercentage.getProductPrice(product.price)
-                    tvNewPrice.text = "LE ${String.format("%.2f", priceAfterOffer)}"
+                    tvNewPrice.text = "Rs. ${String.format("%.2f", priceAfterOffer)}"
                     tvPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 }
 
