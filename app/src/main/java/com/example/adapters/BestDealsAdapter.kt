@@ -18,7 +18,6 @@ class BestDealsAdapter: RecyclerView.Adapter<BestDealsAdapter.BesDealsViewHolder
             binding.apply {
                 Glide.with(itemView).load(product.images[0]).into(imgBestDeal)
 
-
                 product.offerPercentage?.let {
                     val remainingPricePercentage = it - 1f
                     val priceAfterOffer = remainingPricePercentage * product.price

@@ -21,7 +21,10 @@ import com.google.ar.sceneform.rendering.Renderable
 import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.gorisse.thomas.sceneform.scene.await
+import kotlinx.coroutines.tasks.await
 
 class VrFragment : Fragment(R.layout.fragment_vr) {
 
@@ -32,15 +35,14 @@ class VrFragment : Fragment(R.layout.fragment_vr) {
     private val scene get() = arSceneView.scene
     private var model: Renderable? = null
     private var modelView: ViewRenderable? = null
-
-
+    private val storage = FirebaseStorage.getInstance()
+    private val storageRef: StorageReference = storage.reference.child("models")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val product = args.product
-        val model = product.model
-
+//        val model = product.model
         arFragment = (childFragmentManager.findFragmentById(R.id.arFragment) as ArFragment).apply {
             setOnSessionConfigurationListener { session, config ->
                 // Modify the AR session configuration here
@@ -52,10 +54,10 @@ class VrFragment : Fragment(R.layout.fragment_vr) {
         }
 
         lifecycleScope.launchWhenCreated {
+            val model = storageRef.child("coffee_table.glb").downloadUrl.await().toString()
             loadModels(model)
         }
     }
-
 
 
     private suspend fun loadModels(modelUri : String?) {
