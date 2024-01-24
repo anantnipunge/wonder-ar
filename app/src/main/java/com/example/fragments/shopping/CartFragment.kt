@@ -46,7 +46,7 @@ class CartFragment :Fragment(R.layout.fragment_cart) {
             viewModel.productPrice.collectLatest { price->
             price?.let {
                 totalPrice = it
-                binding.tvTotalPrice.text = "LE ${price}"
+                binding.tvTotalPrice.text = "Rs. ${price}"
             }
 
             }

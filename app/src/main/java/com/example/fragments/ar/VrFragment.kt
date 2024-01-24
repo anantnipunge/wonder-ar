@@ -42,7 +42,7 @@ class VrFragment : Fragment(R.layout.fragment_vr) {
         super.onViewCreated(view, savedInstanceState)
 
         val product = args.product
-//        val model = product.model
+        val model = product.model
         arFragment = (childFragmentManager.findFragmentById(R.id.arFragment) as ArFragment).apply {
             setOnSessionConfigurationListener { session, config ->
                 // Modify the AR session configuration here
@@ -54,7 +54,7 @@ class VrFragment : Fragment(R.layout.fragment_vr) {
         }
 
         lifecycleScope.launchWhenCreated {
-            val model = storageRef.child("coffee_table.glb").downloadUrl.await().toString()
+//            val model = storageRef.child("coffee_table.glb").downloadUrl.await().toString()
             loadModels(model)
         }
     }

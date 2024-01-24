@@ -22,7 +22,7 @@ class SpecialProductsAdapter : RecyclerView.Adapter<SpecialProductsAdapter.Speci
 
                  product.offerPercentage?.let {
                      val remainingPricePercentage = it - 1f
-                     val priceAfterOffer = remainingPricePercentage * product.price
+                     val priceAfterOffer = (remainingPricePercentage * product.price)/10
                      tvSpecialProductPrice.text = "Rs. ${String.format("%.2f",priceAfterOffer)}"
                  }
 

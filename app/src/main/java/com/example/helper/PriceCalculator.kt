@@ -6,7 +6,7 @@ fun Float?.getProductPrice(price : Float): Float{
     if(this == null)
         return price
     val remainingPricePercentage = this - 1f
-    val priceAfterOffer = remainingPricePercentage * price
+    val priceAfterOffer = (remainingPricePercentage * price)/10
 
     return priceAfterOffer
 
