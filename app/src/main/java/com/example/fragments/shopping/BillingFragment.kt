@@ -120,7 +120,7 @@ class BillingFragment :Fragment(){
         }
         billingProductAdapter.differ.submitList(products)
         binding.apply {
-            tvTotalPrice.text = "LE ${totalPrice} "
+            tvTotalPrice.text = "Rs. ${totalPrice} "
 
             imageCloseBilling.setOnClickListener {
                 findNavController().navigateUp()

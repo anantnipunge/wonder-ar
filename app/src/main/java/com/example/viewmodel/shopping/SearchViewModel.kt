@@ -28,7 +28,7 @@ class SearchViewModel @Inject constructor(
     fun searchProduct(query: String) {
         viewModelScope.launch { _search.emit(Resource.Loading()) }
 
-       // val searchTerms = query.toLowerCase().split("\\s+".toRegex())
+//        val searchTerms = query.lowercase().split("\\s+".toRegex())
 
             firestore.collection("Products").orderBy("name").whereGreaterThanOrEqualTo("name", query)
                 .whereLessThanOrEqualTo("name", query + "\uf8ff")
